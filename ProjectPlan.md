@@ -10,8 +10,7 @@ together to begin learning more about the correlation between these patterns. We
 
 **Team**
 
-Leela was focused on finding the shark attack data, which was more intensive due to the unique nature of the dataset. Afterwards, her work was
-centered around [...]
+Leela was focused on finding the shark attack data, which was more intensive due to the unique nature of the dataset. Afterwards, her work will be centered around cleaning and integrating the data.
 Kaylee [add stuff]
 Catie [add stuff]
 Jiya was focused on finding and preparing the global tropical cyclone dataset. She found the NOAA IBTrACS dataset, filtered it to include data from 1945 onward, reduced the number of observations so the file could be stored in GitHub, and added both the processed dataset and the script used to create it. Her work will also focus on helping integrate the storm data with the shark attack data using time and location.
