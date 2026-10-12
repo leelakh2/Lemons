@@ -19,13 +19,17 @@ Do changes in weather patterns and storm severity have an effect on shark attack
 
 The first dataset lists shark attacks recorded throughout the world since World War II. Several pieces of information are included when possible, including the date of the attack; whether the attack was provoked or unprovoked; country, state, and location of attack; the name, age, and gender of the victim as well as what activity they were doing and what injury was sustained; whether the attack was fatal; and the species of shark.
 
-The second dataset is NOAA's Global Historical Climatology Network - Monthly (GHCN-M) dataset which contains average temperatures recorded at weather stations around the world. It can be connected to the other two datasets via matching the events - cyclone or shark attack - to the nearest station and month. For the purposes of this project, we are using data from 1945 onwards so the time period matches up nicely with the other datasets. This dataset includes information about the station ID, latitude, longitude, year, and average temperature each month in degrees Celsius. Due to the size of the original file, we made some adjustments in order to shrink the size of the file while still keeping the years and variables needed. Some of the adjustments included removing the stations near the North and South Poles where there aren't likely any shark attacks and removing data prior to 1945. 
+The second dataset is NOAA's Global Historical Climatology Network - Monthly (GHCN-M) dataset which contains average temperatures recorded at weather stations around the world. It can be connected to the other two datasets via matching the events(cyclone or shark attack) to the nearest station and month. For the purposes of this project, we are using data from 1945 onwards so the time period matches up nicely with the other datasets. This dataset includes information about the station ID, latitude, longitude, year, and average temperature each month in degrees Celsius. Due to the size of the original file, we made some adjustments in order to shrink the size of the file while still keeping the years and variables needed. Some of the adjustments included removing the stations near the North and South Poles where there aren't likely any shark attacks and removing data prior to 1945. 
 
 Our third dataset is NOAA's International Best Track Archive for Climate Stewardship (IBTrACS), which contains historical tropical cyclone data from around the world. For this project, we are using records from 1945 onwards so the time period better matches the shark attack data. The dataset includes information such as the storm name, date, ocean basin, latitude and longitude, wind speed, and storm intensity. Because the original global file was very large, we created a smaller version with one observation per storm per day while keeping the variables that are most useful for out project. This dataset can be connected to the shark attach data using date and geographic location.
 
 **Timeline**
 
-[insert timeline]
+Our first goal was to have all three datasets chosen and a rough plan on how to connect them all by the time our project outline is due (Monday, Nov 12).
+In the next 1-2 weeks we want to make sure that our datasets are cleaned, checked for missing values, and standardized(especially location, dates and units). 
+After that, we plan on integrating the datasets by matching up the shark attacks and tropical cyclones with the nearest weather station and month. 
+Following that, we will work on analysis, evaluating visuals and starting to think about key takeaways. 
+[insert rest of timeline & maybe more precise dates]
 
 **Constraints**
 
