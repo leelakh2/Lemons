@@ -7,8 +7,11 @@ The goal of this project is to understand the relationship between shark behavio
 **Team**
 
 Leela was focused on finding the shark attack data, which was more intensive due to the unique nature of the dataset. Afterwards, her work will be centered around cleaning and integrating the data.
+
 Kaylee was focused on finding and preparing the global climate dataset which needed to be adjusted in order to upload. The edited NOAA Global Historical Climatology Network - Monthly (GHCN-M) dataset is filtered to include data from 1945 onwards. It was adjusted to reduce the size of the file in order to upload and be stored in GitHub(both the edited dataset and the script used to create it are in the repository). Her work will also focus on helping to integrate the climate data with the shark attack and storm datasets utilizing both data and location. 
+
 Catie [add stuff]
+
 Jiya was focused on finding and preparing the global tropical cyclone dataset. She found the NOAA IBTrACS dataset, filtered it to include data from 1945 onward, reduced the number of observations so the file could be stored in GitHub, and added both the processed dataset and the script used to create it. Her work will also focus on helping integrate the storm data with the shark attack data using time and location.
 
 **Research Question**
