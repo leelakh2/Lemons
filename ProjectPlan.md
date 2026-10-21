@@ -48,8 +48,8 @@ Our **third dataset** is NOAA's International Best Track Archive for Climate Ste
 10/26 - Data integration in progress  
 11/02 - Data integration completed, DB ready for analysis  
 11/09 - Data analysis/visualization completed  
-11/16 - Status report completed, workflow steps completed  
-11/19 - **Interim Status Report submission**  
+11/09 - **Interim Status Report submission**  
+11/16 - Status report completed, workflow steps completed   
 11/23 - Workflow completed, documentation collected from members  
 11/30 - Final report initial draft completed, final tests and checks  
 12/07 - **Final Project submission**  
