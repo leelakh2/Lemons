@@ -1,0 +1,13 @@
+1. The shark attack data has 39320 rows and it will take a long time to match each location using wikidata
+2. We need enough data 
+3. We are going to change the scope of our project and will eventually make changes to our project plan
+
+
+
+We have discussed to use the top 3 countries with the most amount of total shark attacks instead of using all of the data and countries included. 
+The top three countries are the United States with 2,593 recorded shark attacks, Australia with 1,536, and South Africa with 599 recorded shark attacks.
+This will allow us to extract more meaningful information than having to match each location across the globe with its match. The goal of the project is to understand how shark 
+behavior is influenced by climate data such as temperature, so narrowing the scope of countries involved will not hinder this exploration. 
+
+- Leela, Kaylee, Jiya, Catie
+This conversation was held in class and all members participated equally
