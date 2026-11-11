@@ -1,5 +1,5 @@
 1. The shark attack data has 39320 rows and it will take a long time to match each location using wikidata
-2. We need enough data 
+2. We need enough data - at least 100 records per file, so combining the top three countries works!
 3. We are going to change the scope of our project and will eventually make changes to our project plan
 
 
