@@ -25,7 +25,7 @@ df["ISO_TIME"] = pd.to_datetime(df["ISO_TIME"], errors="coerce")
 df["DATE"] = df["ISO_TIME"].dt.strftime("%Y-%m-%d")
 
 # sort to keep earlier observation of the day
-df = df.sort_values(["SID", "ISO_TIME])
+df = df.sort_values(["SID", "ISO_TIME"])
 
 KEEP_COLS = [ "SID", "SEASON", "NAME", "DATE", "BASIN", "LAT", "LON", "USA_WIND", "USA_SSHS", "TRACK_TYPE" ]
 df = df[KEEP_COLS]
