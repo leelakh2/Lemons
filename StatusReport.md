@@ -25,6 +25,8 @@ One issue we have noticed is that the datasets contain location information in d
 
 The shark attack dataset also contains missing information and unnecessary columns. The updated CSV has 185 columns, but 170 of them are completely empty. We will need to remove these unnecessary columns and decide how to handle records with missing information.
 
+The cyclone dataset
+
 [Team members: Add the cleaning steps completed so far and the results of the data quality assessments. Include accuracy, completeness, timeliness, and consistency for each dataset.]
 
 ### Database Design and Data Integration
@@ -109,7 +111,7 @@ Kaylee was responsible for finding and preparing NOAA's GHCN-M temperature datas
 
 Catie is responsible for data analysis, visualization, and documenting the steps of the project. She is also helping organize the workflow from data acquisition through analysis.
 
-[Catie: Add specific work completed for this milestone.]
+For this milestone, Catie analyzed and cleaned the IBTrACS tropical cyclone set using OpenRefine. She made edits to Jiya's initial preparation script to ensure that there is enough information to accurately assess the quality and information in this dataset. She explored different ways to translate the coordinates in the dataset to cities/countries using reverse geocoding.
 
 ### Jiya
 
