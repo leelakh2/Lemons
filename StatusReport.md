@@ -13,11 +13,14 @@ So far, we have found and prepared our three datasets and have started working t
 
 We have collected all three datasets needed for our project and made adjustments to reduce their sizes and prepare them for integration.
 
-**Shark Attack Data:** Leela was responsible for finding the historical shark attack dataset. The updated CSV contains 39,230 records and includes information such as the date, country, state, location, activity, injuries, and whether the attack was fatal. After looking through the data, we found that the United States had the most recorded attacks with 2,593, followed by Australia with 1,536 and South Africa with 599. These three countries have 4,728 records combined across all available years. When limiting the records to 1945 onward, we have 3,654 records remaining before further cleaning. The OpenRefine archive files, as well as the cleanest CSV, are uploaded to our Github repository. 
+**Shark Attack Data:** Leela was responsible for finding the historical shark attack dataset. The updated CSV contains 39,230 records and includes information such as the date, country, state, location, activity, injuries, and whether the attack was fatal. After looking through the data, we found that the United States had the most recorded attacks with 2,593, followed by Australia with 1,536 and South Africa with 599. These three countries have 4,728 records combined across all available years. When limiting the records to 1945 onward, we have 3,654 records remaining before further cleaning. The OpenRefine archive files, as well as the cleanest CSV, are uploaded to our Github repository.  
+[Original Shark Attack Data](GSAF5(1).xls)  
 
-**Temperature Data:** Kaylee was responsible for finding and preparing NOAA's GHCN-M dataset. The original dataset was very large, so she filtered it to include records from 1945 onward and removed stations near the North and South Poles where shark attacks are unlikely to occur. This helped reduce the size of the file while keeping the temperature information we need. The processed dataset and the script used to prepare it have been added to our GitHub repository.
+**Temperature Data:** Kaylee was responsible for finding and preparing NOAA's GHCN-M dataset. The original dataset was very large, so she filtered it to include records from 1945 onward and removed stations near the North and South Poles where shark attacks are unlikely to occur. This helped reduce the size of the file while keeping the temperature information we need. The processed dataset and the script used to prepare it have been added to our GitHub repository.  
+[Temperature Data Processing Script](kaylee_script_to_shrink_data.py)  
 
-**Tropical Cyclone Data:** Jiya and Catie were responsible for finding and preparing NOAA's IBTrACS dataset. Since the original file was also very large, they filtered it to include storms that occurred from 1945 onwards and were confirmed main track records. This allowed us to keep important information such as storm dates, locations, wind speeds, and intensity while making the file easier to store and work with. The processed dataset and the Python script used to prepare it have also been added to GitHub. The data was then uploaded to an OpenRefine project for cleaning and integration.
+**Tropical Cyclone Data:** Jiya and Catie were responsible for finding and preparing NOAA's IBTrACS dataset. Since the original file was also very large, they filtered it to include storms that occurred from 1945 onwards and were confirmed main track records. This allowed us to keep important information such as storm dates, locations, wind speeds, and intensity while making the file easier to store and work with. The processed dataset and the Python script used to prepare it have also been added to GitHub. The data was then uploaded to an OpenRefine project for cleaning and integration.  
+[Cyclone Data Processing Script](prepare_ibtracs.py)  
 
 ### Data Quality Assessment and Cleaning
 
@@ -27,12 +30,15 @@ The **shark attack dataset** also contains missing information and unnecessary c
 [Cleaned Shark Attack Data](Shark-Attack-Data.csv)  
 [Shark Attack OpenRefine Project](Shark-Attack-Data.openrefine.tar.gz)
 
-The **temperature dataset** was filtered to only include stations in the United States, Australia, and South Africa, which reduced it from 1,043,655 rows to 558,396 rows. One issue we noticed is that the dataset uses different country codes than expected, such as “SF” for South Africa and “AS” for Australia, so we had to be careful when filtering. The temperature data also has missing values, since many years are missing temperatures for one or more months. We decided to leave these blank instead of filling them in so we do not add estimated values.
-[Cleaned Temperature Dataset](
+The **temperature dataset** was filtered to only include stations in the United States, Australia, and South Africa, which reduced it from 1,043,655 rows to 558,396 rows. One issue we noticed is that the dataset uses different country codes than expected, such as “SF” for South Africa and “AS” for Australia, so we had to be careful when filtering. The temperature data also has missing values, since many years are missing temperatures for one or more months. We decided to leave these blank instead of filling them in so we do not add estimated values.  
+[Stations to Cities Data](station_cities.csv)  
+[Nearest City Matching Script](nearest_city_matching.ipynb)  
+[Temperature OpenRefine History](openrefine_history_ghcnm.json)  
+[Stations OpenRefine History](openrefine_history_stations.json)  
 
-The cyclone dataset was filtered to only contain data from storms that occurred in the year 1945 or after. Additionally, we chose to only keep records with the "main" track type, meaning the data is associated with the primary track of the storm. While processing the data, there was an issue with pandas and OpenRefine classifying the label NA (North Atlantic) with null values. Additionally there were missing values for both the wind speed and name attributes, which we are choosing to keep as null values. The location parameters in this dataset are latitude and longitude coordinates and the distance from land for each observation of the storm, so we will need to use reverse geocoding to pull the cities and countries of each record.
-[Cleaned Cyclone Data](ibtracs-cleaned-csv.csv)
-[Cyclone OpenRefine Project](
+The **cyclone dataset** was filtered to only contain data from storms that occurred in the year 1945 or after. Additionally, we chose to only keep records with the "main" track type, meaning the data is associated with the primary track of the storm. After applying these filters, there are a total 508,181 records documenting 8,620 unique storms. While processing the data, there was an issue with pandas and OpenRefine classifying the label NA (North Atlantic) with null values, which we were able to catch with an update to the processing script. Additionally there were missing values for both the wind speed and name attributes, which we are choosing to keep as null values. The location parameters in this dataset are latitude and longitude coordinates and the distance from land for each observation of the storm, so we will need to use reverse geocoding to pull the closest cities and countries of each record.  
+[Cleaned Cyclone Data](ibtracs-cleaned-csv.csv)  
+[Cyclone OpenRefine Project](ibtracs-cleaned-csv.opentrefine.tar.gz)
 
 ### Database Design and Data Integration
 
