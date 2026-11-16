@@ -25,6 +25,10 @@ One issue we have noticed is that the datasets contain location information in d
 
 The shark attack dataset also contains missing information and unnecessary columns. The updated CSV has 185 columns, but 170 of them are completely empty. We will need to remove these unnecessary columns and decide how to handle records with missing information.
 
+The temperature dataset was filtered to only include stations in the United States, Australia, and South Africa, which reduced it from 1,043,655 rows to 558,396 rows. One issue we noticed is that the dataset uses different country codes than expected, such as “SF” for South Africa and “AS” for Australia, so we had to be careful when filtering.
+
+The temperature data also has missing values, since many years are missing temperatures for one or more months. We decided to leave these blank instead of filling them in so we do not add estimated values.
+
 The cyclone dataset
 
 [Team members: Add the cleaning steps completed so far and the results of the data quality assessments. Include accuracy, completeness, timeliness, and consistency for each dataset.]
@@ -36,6 +40,8 @@ Our plan is still to connect the three datasets using time and geographic locati
 We originally considered using Wikidata to match the shark attack locations, but doing this for locations across the entire world would take a significant amount of time. By narrowing our project to three countries, we hope to make the matching process more manageable.
 
 We also need to consider the differences in how time is recorded. For example, the temperature dataset contains monthly averages, while shark attacks and tropical cyclones have specific dates. We will need to decide how to connect these records in a way that makes sense for our research question.
+
+We have started matching locations using the temperature data. Each of the 13,288 weather stations was matched to its nearest city using city locations from Wikidata, and the city information was added back to the temperature dataset. Since each city has a Wikidata ID, we may be able to use these IDs to connect the shark attack locations to the same cities.
 
 [Team members: Add progress on the conceptual database model, database creation, integration scripts, and any matching or integration already completed.]
 
@@ -50,6 +56,8 @@ Once we finish integrating the datasets, we plan to compare shark attack pattern
 We plan to create a workflow that connects the different steps of our project, from data acquisition and cleaning to integration and analysis. We already have scripts for preparing the temperature and tropical cyclone datasets, but we still need to organize the full process so it can be run from beginning to end.
 
 We will also need to document our steps and test the workflow on a clean copy of the repository to make sure everything runs properly.
+
+For the temperature data, we added the Wikidata queries, the Python notebook used to match stations to cities, and the OpenRefine history files to GitHub so these steps can be repeated.
 
 [Team members: Add any completed workflow scripts, documentation, or testing.]
 
@@ -71,7 +79,7 @@ We have updated our project plan to reflect this decision.
 
 **Large datasets:** One of our first challenges was that the temperature and tropical cyclone datasets were too large to conveniently upload to GitHub. We addressed this by filtering both datasets to include data from 1945 onward and reducing unnecessary observations while keeping the variables we needed.
 
-**Matching locations:** Another major challenge has been figuring out how to match shark attack locations with the climate and cyclone data. The shark attack dataset contains many specific locations, and matching all of them through Wikidata would take a long time. To address this, we decided to narrow our focus to the three countries with the most recorded attacks. We still need to finalize how we will match locations within those countries.
+**Matching locations:** Another major challenge has been figuring out how to match shark attack locations with the climate and cyclone data. The shark attack dataset contains many specific locations, and matching all of them through Wikidata would take a long time. To address this, we decided to narrow our focus to the three countries with the most recorded attacks. To address this, we decided to narrow our focus to the three countries with the most recorded attacks. For the temperature data, we sped up the matching process by reducing the data to one row per station before matching it to cities. We still need to finalize how we will match the shark attack and cyclone locations.
 
 **Differences between datasets:** The datasets do not all record information in the same way. The shark attack data includes specific dates and locations, while the climate data contains monthly temperature averages from weather stations. We will need to standardize these differences before integration.
 
@@ -105,7 +113,7 @@ Leela was responsible for finding the historical shark attack dataset and is wor
 
 Kaylee was responsible for finding and preparing NOAA's GHCN-M temperature dataset. She filtered the data to include records from 1945 onward and reduced the file size so it could be stored in GitHub. She also added the processed dataset and the script used to prepare it.
 
-[Kaylee: Add any additional work completed for this milestone.]
+For this milestone, Kaylee filtered the GHCN-M dataset to the United States, Australia, and South Africa using OpenRefine. She used Wikidata and a Python script to match each weather station to its nearest city and added this information back to the temperature dataset. She also added the queries, notebook, and updated data to GitHub.
 
 ### Catie
 
