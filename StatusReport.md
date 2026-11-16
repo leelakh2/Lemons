@@ -17,17 +17,22 @@ We have collected all three datasets needed for our project and made adjustments
 
 **Temperature Data:** Kaylee was responsible for finding and preparing NOAA's GHCN-M dataset. The original dataset was very large, so she filtered it to include records from 1945 onward and removed stations near the North and South Poles where shark attacks are unlikely to occur. This helped reduce the size of the file while keeping the temperature information we need. The processed dataset and the script used to prepare it have been added to our GitHub repository.
 
-**Tropical Cyclone Data:** Jiya and Catie were responsible for finding and preparing NOAA's IBTrACS dataset. Since the original file was also very large, they filtered it to include records from 1945 onward and reduced the observations to one per storm per day. This allowed us to keep important information such as storm dates, locations, wind speeds, and intensity while making the file easier to store and work with. The processed dataset and the Python script used to prepare it have also been added to GitHub.
+**Tropical Cyclone Data:** Jiya and Catie were responsible for finding and preparing NOAA's IBTrACS dataset. Since the original file was also very large, they filtered it to include storms that occurred from 1945 onwards and were confirmed main track records. This allowed us to keep important information such as storm dates, locations, wind speeds, and intensity while making the file easier to store and work with. The processed dataset and the Python script used to prepare it have also been added to GitHub. The data was then uploaded to an OpenRefine project for cleaning and integration.
 
 ### Data Quality Assessment and Cleaning
 
 One issue we have noticed is that the datasets contain location information in different formats. For example, the shark attack data includes specific beaches, cities, and states, while the temperature and cyclone datasets use geographic coordinates or weather station locations. We will need to make these locations consistent before connecting the datasets, such as linking them to nearby cities and states to compare more easily.
 
-The shark attack dataset also contains missing information and unnecessary columns. The updated CSV has 185 columns, but 170 of them are completely empty. We will need to remove these unnecessary columns and decide how to handle records with missing information. Many of these columns have been deleted, and a lot of the typos and incorrectly inputted locations have been fixed based on references to Wikidata and the Internet to determine the authenticity of different listed locations. Most of the data is complete, but the typos have altered the accuracy level and limit the ability to automatically cluster attacks from the same areas. 
+The **shark attack dataset** also contains missing information and unnecessary columns. The updated CSV has 185 columns, but 170 of them are completely empty. We will need to remove these unnecessary columns and decide how to handle records with missing information. Many of these columns have been deleted, and a lot of the typos and incorrectly inputted locations have been fixed based on references to Wikidata and the Internet to determine the authenticity of different listed locations. Most of the data is complete, but the typos have altered the accuracy level and limit the ability to automatically cluster attacks from the same areas.  
+[Cleaned Shark Attack Data](Shark-Attack-Data.csv)  
+[Shark Attack OpenRefine Project](Shark-Attack-Data.openrefine.tar.gz)
 
-The temperature dataset was filtered to only include stations in the United States, Australia, and South Africa, which reduced it from 1,043,655 rows to 558,396 rows. One issue we noticed is that the dataset uses different country codes than expected, such as “SF” for South Africa and “AS” for Australia, so we had to be careful when filtering. The temperature data also has missing values, since many years are missing temperatures for one or more months. We decided to leave these blank instead of filling them in so we do not add estimated values.
+The **temperature dataset** was filtered to only include stations in the United States, Australia, and South Africa, which reduced it from 1,043,655 rows to 558,396 rows. One issue we noticed is that the dataset uses different country codes than expected, such as “SF” for South Africa and “AS” for Australia, so we had to be careful when filtering. The temperature data also has missing values, since many years are missing temperatures for one or more months. We decided to leave these blank instead of filling them in so we do not add estimated values.
+[Cleaned Temperature Dataset](
 
-The cyclone dataset [Team members: Add the cleaning steps completed so far and the results of the data quality assessments. Include accuracy, completeness, timeliness, and consistency for each dataset.]
+The cyclone dataset was filtered to only contain data from storms that occurred in the year 1945 or after. Additionally, we chose to only keep records with the "main" track type, meaning the data is associated with the primary track of the storm. While processing the data, there was an issue with pandas and OpenRefine classifying the label NA (North Atlantic) with null values. Additionally there were missing values for both the wind speed and name attributes, which we are choosing to keep as null values. The location parameters in this dataset are latitude and longitude coordinates and the distance from land for each observation of the storm, so we will need to use reverse geocoding to pull the cities and countries of each record.
+[Cleaned Cyclone Data](ibtracs-cleaned-csv.csv)
+[Cyclone OpenRefine Project](
 
 ### Database Design and Data Integration
 
@@ -39,7 +44,7 @@ We also need to consider the differences in how time is recorded. For example, t
 
 We have started matching locations using the temperature data. Each of the 13,288 weather stations was matched to its nearest city using city locations from Wikidata, and the city information was added back to the temperature dataset. Since each city has a Wikidata ID, we may be able to use these IDs to connect the shark attack locations to the same cities. Some of the shark attack locations are listed as specific beaches or tiny towns within a specific region, which would make it harder to match to the specific cities in the other datasets. To mitigate this, some of these beaches in a specific city are mapped to that city to allow them to more easily match using location as the key. 
 
-[Team members: Add progress on the conceptual database model, database creation, integration scripts, and any matching or integration already completed.] I think just add something about cyclone
+The cyclone data only records locations as latitude and longitude coordinates that are mostly in the ocean. To work with this, we are planning on narrowing down our records to ones that are within a certain distance to land and reverse geocoding the coordinates to get a country. If the record is for a location in the US, South Africa, or Australia, we will keep the record and find the city that the coordinates correspond to.
 
 ### Data Analysis and Visualization
 
@@ -47,7 +52,6 @@ Once we finish integrating the datasets, we plan to compare shark attack pattern
 
 Looking just at the shark attack data, the number of total shark attacks across our three chosen countries increases substantially between the 1990s and the 2000s, from 45 attacks in 1999 to 75 in 2000. And this higher rate continues throughout the next decade. Although not yet compared to the other datasets, this could be partly attributed to general global rising temperatures. This can be confirmed by comparison with the temperature and cyclone levels across specific years, instead of just locations. Trends can be found across different cities, but we are also able to observe global trends across different years. 
 
-[Team members: Add any analysis, visualizations, or preliminary findings completed so far.]
 
 ### Workflow Automation and Documentation
 
@@ -55,9 +59,8 @@ We plan to create a workflow that connects the different steps of our project, f
 
 We will also need to document our steps and test the workflow on a clean copy of the repository to make sure everything runs properly.
 
-For the temperature data, we added the Wikidata queries, the Python notebook used to match stations to cities, and the OpenRefine history files to GitHub so these steps can be repeated. The shark attack data has also been uploaded to Github as its OpenRefine archive, so the history of cleaning and Wikidata matching is available and repeatable. 
+For the temperature data, we added the Wikidata queries, the Python notebook used to match stations to cities, and the OpenRefine history files to GitHub so these steps can be repeated. The shark attack data and cyclone data have also been uploaded to Github as its OpenRefine archive, so the history of cleaning and Wikidata matching is available and repeatable. 
 
-[Team members: Add any completed workflow scripts, documentation, or testing.]
 
 ## Changes to Our Project Plan
 
@@ -71,7 +74,6 @@ Our overall goal has not changed. We still want to understand how shark attacks 
 
 We have updated our project plan to reflect this decision.
 
-[Team members: Add any changes made in response to feedback received on the original project plan.]
 
 ## Challenges and Solutions
 
@@ -117,7 +119,7 @@ For this milestone, Kaylee filtered the GHCN-M dataset to the United States, Aus
 
 Catie is responsible for data analysis, visualization, and documenting the steps of the project. She is also helping organize the workflow from data acquisition through analysis.
 
-For this milestone, Catie analyzed and cleaned the IBTrACS tropical cyclone set using OpenRefine. She made edits to Jiya's initial preparation script to ensure that there is enough information to accurately assess the quality and information in this dataset. She explored different ways to translate the coordinates in the dataset to cities/countries using reverse geocoding.
+For this milestone, Catie analyzed and cleaned the IBTrACS tropical cyclone set using OpenRefine. She made edits to Jiya's initial preparation script to ensure that there is enough information to accurately assess the quality and information in this dataset. She explored different ways to translate the coordinates in the dataset to cities/countries using reverse geocoding, and plans on discussing these ideas with the group's TA.  
 
 ### Jiya
 
